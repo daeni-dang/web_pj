@@ -1,22 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>강의 개설</title>
 
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./subject.css" />
 
 </head>
 <body>
+<%
+	String driver = "";
+	Connection con = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	String sql = null;
+	ResultSet rs = null;
+	int count = 0;
+	
+	String pro_name = "";
+	int pro_num = 0;
+	try {
+    	Class.forName("com.mysql.jdbc.Driver");
+    	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
+    	con = DriverManager.getConnection(driver, "root", "0000");
+    	sql = "select name, pro_num from professer";
+		pstmt = con.prepareStatement(sql);
+    	rs = pstmt.executeQuery(sql);
+    	while (rs.next()) {
+    		pro_name = rs.getString("name");
+    		pro_num = rs.getInt("pro_num");
+    	}
+		pstmt.close();
+    	rs.close();
+		con.close();
+    } catch (ClassNotFoundException e) { 
+		System.out.println("드라이버 로드 실패");
+	} catch (SQLException e) {
+        System.out.println("DB 접속 실패");
+        e.printStackTrace();
+    }
+%>
 	<div id="container">
 		<div id="header">
 			<img id="image" alt="error" src="../elephant.png" align="left">
 			<div id="header_in">
-				<p font-size:32px>OOO님 환영합니다</p>
+				<p font-size:32px><%=pro_name %>님 환영합니다</p>
 				<button background-color:"#FFFFFF", font-color:"#000000",align:"right">로그아웃</button>
         		</div>
 			<p>강의 개설 </p>
@@ -29,53 +62,27 @@
 			<div class="content_top">
 				<div>
 				<div id="title">강의 개설 신청</div>
-				<select id="leave_or_return" class="drop_down">
-					<option value="default">-- 선택 --</option>
-					<option value="major" id="major">전공</option>
-					<option value="else" id="else">교양</option>
+				<form method="post" action="saveMakeLecture.jsp">
+				</div>
+				<select name="lec_type" class="drop_down">
+					<option value="0" id="major">전공</option>
+					<option value="1" id="else">교양</option>
 				</select>
-				강의명 <input type="text" id="lecture_name" class="drop_down">
-				강의 인원 <input type="number" id="student_num" class="drop_down">
-				
+				강의명 <input type="text" name="lec_name" class="drop_down"><br>
+					<big>월</big><input type="checkbox" name="lec_day" value="월" id="subject_check">
+					<input type="time" name="start_time"><input type="time" name="end_time">
+					<big>화</big><input type="checkbox" name="lec_day" value="화" id="subject_check">
+					<input type="time" name="start_time"><input type="time" name="end_time">
+					<big>수</big><input type="checkbox" name="lec_day" value="수" id="subject_check">
+					<input type="time" name="start_time"><input type="time" name="end_time"><Br>
+					<big>목</big><input type="checkbox" name="lec_day" value="목" id="subject_check">
+					<input type="time" name="start_time"><input type="time" name="end_time">
+					<big>금</big><input type="checkbox" name="lec_day" value="금" id="subject_check">
+					<input type="time" name="start_time"><input type="time" name="end_time">
+
 				<button id="reg_button" onclick="after_search();">신청</button>
-				
-				</div>
-				<div class="content_top_down">
-					<input type="checkbox" name="day" value="mon" id="subject_check"><big>월</big>
-					<input type="checkbox" name="day" value="tue" id="subject_check"><big>화</big>
-					<input type="checkbox" name="day" value="wed" id="subject_check"><big>수</big>
-					<input type="checkbox" name="day" value="thu" id="subject_check"><big>목</big>
-					<input type="checkbox" name="day" value="fri" id="subject_check"><big>금</big>
-					<button onclick="show_select_time();" id="time_button">강의 시간 설정</button>
-					<br><br>
-					<script>
-						function show_select_time() {
-							const query = 'input[name="day"]:checked';
-							const selected = document.querySelectorAll(query);
-							const selectedNum = selected.length;
-							const startTimeDiv = document.getElementById("start_time");
-							startTimeDiv.textContent = "강의 시작 시간";
-							const endTimeDiv = document.getElementById("end_time");
-							endTimeDiv.textContent = "강의 종료 시간";
-							for (var i=0; i<selectedNum; i++) {
-								var newInputStart = document.createElement("input");
-								newInputStart.setAttribute("type", "time");
-								newInputStart.id="start_time";
-								var newInputEnd = document.createElement("input");
-								newInputEnd.setAttribute("type", "time");
-								newInputEnd.id="start_time";
-								startTimeDiv.appendChild(newInputStart);
-								endTimeDiv.appendChild(newInputEnd);
-							}
-							
-						}
-						
-					</script>
-					<div id="show_time">
-						<div id="start_time">  </div>
-						<div id="end_time">  </div>
-					</div>
-				</div>
+				<input type="hidden" name="pro_num" value=<%=pro_num %>>
+				</form>
 			</div>
 			<div class="content_bottom">
 				<div id="title">강의 개설 신청 내역</div>

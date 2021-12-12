@@ -27,6 +27,7 @@
 }
 
 .content_bottom {
+	overflow: auto;
 	float:bottom;
 	height: 52%;
 	border: 1px solid #bcbcbc;
@@ -66,7 +67,7 @@
 	margin: 0.4%;
 }
 .each_content_content {
-	width: 80%;
+	width: 70%;
 	border: 1px solid #bcbcbc;
 	padding: 1%;
 	margin: 0.4%;

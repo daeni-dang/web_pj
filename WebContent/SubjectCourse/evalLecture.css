@@ -1,0 +1,107 @@
+#title {
+	font-size: 27px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.searchButton {
+	width: 8%;
+	float: left;
+	height: 30px;
+	margin-top: 2px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #5E5E5E;
+	color: white;
+}
+.searchLecture {
+	float: right;
+	width: 90%;
+	height: 30px;
+}
+#forEvalLecture {
+	border: 1px solid;
+	margin-top: 70px;
+}
+.eachTd {
+	font-size: 18px;
+	font-weight: bold;
+}
+#content {
+	overflow:auto;
+}
+.question {
+	font-size: 19px;
+	font-weight: bold;
+}
+.answer {
+	margin-top: 20px;
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+#anotherAnswer {
+	width: 80%;
+	height: 70px;
+	margin-top: 20px;
+	resize: none;
+}
+#forButton {
+	text-align: center;
+}
+#submitEvalLecture {
+	height: 50px;
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #5E5E5E;
+	color: white;
+}
+.content_bottom_absence {
+	margin-top: 10px;
+	height: 52%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+}
+.each_content_front {
+	border: 1px solid #bcbcbc;
+	height: 30px;
+	padding: 1%;
+	margin-top: 3.33px;
+	width: 10%;
+}
+
+.each_lecture {
+	padding:1%;
+	border: 1px solid;
+	font-size: 20px;
+	font-weight: bold;
+	width: 280px;
+}
+.each_lecture_button {
+	padding:1%;
+	border: 1px solid;
+	font-size: 20px;
+	font-weight: bold;
+	width: 120px;
+}
+#button_eval {
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #5E5E5E;
+	color: white;
+}
+.each_lecture_front {
+	padding:1%;
+	border: 1px solid;
+	font-size: 20px;
+	font-weight: bold;
+	width: 150px;
+}
+.each_lecture_back {
+	padding:1%;
+	border: 1px solid;
+	font-size: 20px;
+	font-weight: bold;
+	width: 700px;
+}
