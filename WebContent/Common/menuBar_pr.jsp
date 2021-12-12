@@ -20,7 +20,6 @@
 				</li>
 				<li class="menubar">수강신청
 					<ul>						
-						<li onclick="location.href='../SubjectCourse/checkEvalResult.jsp'">강의 평가 결과 조회</li>
 						<% //교수 %>
 						<li onclick="location.href='../SubjectCourse/makeLecture.jsp'">강의 개설</li>
 						
@@ -30,7 +29,6 @@
 					<ul>
 						<%//교수 %>
 						<li onclick="location.href='../Grade/registerGrade.jsp'">성적 등록</li>
-						<li onclick="location.href='../Grade/checkGradeEachLecture.jsp'">강의별 성적 조회</li>
 					</ul>
 				</li>
 			</ul>

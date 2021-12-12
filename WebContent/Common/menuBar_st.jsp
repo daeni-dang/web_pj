@@ -15,16 +15,13 @@
 					<ul>
 						<% //학생  %>
 						<li onclick="location.href='../SchoolRegister/checkStudentInfo.jsp'">개인 정보 조회</li>
-						<li onclick="location.href='../SchoolRegister/requestLeaveReturn.jsp'">휴/복학신청</li>
 					</ul>
 				</li>
 				<li class="menubar">수강신청
 					<ul>						
-						<li onclick="location.href='../SubjectCourse/checkEvalResult.jsp'">강의 평가 결과 조회</li>
 						<% //학생 %>
 						<li onclick="location.href='../SubjectCourse/requestLecture.jsp'">수강신청</li>
 						<li onclick="location.href='../SubjectCourse/evalLecture.jsp'">강의 평가</li>
-						<li onclick="location.href='../SubjectCourse/requestAbsence.jsp'">유교 결석 신청</li>
 						
 					</ul>
 				</li>
