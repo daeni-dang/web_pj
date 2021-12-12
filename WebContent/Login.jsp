@@ -9,7 +9,13 @@
 		<h1>로그인</h1>
 		<hr>
 		<div>
-			<form action="Login_verify.jsp">
+			<form action="Login_verify.jsp" method="post" >
+				<select id = "jobs" name ="jobs">
+					<option value="Professor">교수</option>
+					<option value="Manager">관리자</option>
+					<option value="Student" selected="selected">학생</option>
+				</select>
+				<br>
 				<label class="text_uname"><b>ID : </b></label> 
 				<input type="text" placeholder="아이디를 입력하세요" name="id" required> 
 				<br>
