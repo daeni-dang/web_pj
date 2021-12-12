@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>평가항목별 성적 조회</title>
 
 <%
 	String name = (String)session.getAttribute("name");

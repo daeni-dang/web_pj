@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>성적공시</title>
 
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./grade.css" />

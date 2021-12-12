@@ -30,7 +30,6 @@
 						<%//학생 %>
 						<li onclick="location.href='../Grade/checkEachGrade.jsp'">평가항목별 성적 조회</li>
 						<li onclick="location.href='../Grade/announceGrade.jsp'">성적공시</li>
-						<li onclick="location.href='../Grade/checkPrintAllGrade.jsp'">전체성적 조회 및 출력</li>
 					</ul>
 				</li>
 				<li class="menubar">등록

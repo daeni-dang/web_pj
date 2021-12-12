@@ -11,7 +11,7 @@
 	String name = (String)session.getAttribute("name");
 	String id =session.getAttribute("id").toString();
 %>
-<title>Insert title here</title>
+<title>성적 등록</title>
 </head>
 <body>
 					<% GregorianCalendar today = new GregorianCalendar ( );
