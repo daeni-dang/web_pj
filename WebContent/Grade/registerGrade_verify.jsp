@@ -45,7 +45,7 @@
 						try { 
 						Class.forName("com.mysql.jdbc.Driver");
 						String jdbcurl = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
-						conn = DriverManager.getConnection(jdbcurl, "root", "1234");
+						conn = DriverManager.getConnection(jdbcurl, "root", "0000");
 						stmt = conn.createStatement();
 						sql = "select * from lecture where lec_name='"+lecture+"'"; //+id ;
 						rs = stmt.executeQuery(sql);
@@ -69,7 +69,7 @@
 								</script>
 							<% 
 							}else{
-								sql="insert into grade values("+lecture_num+","+student+","+","+mid_test+","+final_test+","+attend+","+homework+","+etc+",'"+final_grade+"' ,"+year+","+curSemester+")";
+								sql="insert into grade values("+lecture_num+","+student+","+id+","+mid_test+","+final_test+","+attend+","+homework+","+etc+",'"+final_grade+"' ,"+year+","+curSemester+")";
 								stmt.executeUpdate(sql);%>
 								<script type="text/javascript">
 								  alert("등록이 완료되었습니다.");

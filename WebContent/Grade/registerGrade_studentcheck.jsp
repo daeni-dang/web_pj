@@ -53,7 +53,7 @@
 						try { 
 						Class.forName("com.mysql.jdbc.Driver");
 						String jdbcurl = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
-						conn = DriverManager.getConnection(jdbcurl, "root", "1234");
+						conn = DriverManager.getConnection(jdbcurl, "root", "0000");
 						stmt = conn.createStatement();
 						sql = "select * from lecture where lec_name='"+lecture+"'"; //+id ;
 						rs = stmt.executeQuery(sql);

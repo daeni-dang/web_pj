@@ -47,7 +47,7 @@
 						conn = DriverManager.getConnection(jdbcurl, "root", "0000");
 						stmt = conn.createStatement();
 						
-						sql = "select * from lecture where  pro_num='"+id ;
+						sql = "select * from lecture where pro_num="+id;
 						rs = stmt.executeQuery(sql);
 						
 		
