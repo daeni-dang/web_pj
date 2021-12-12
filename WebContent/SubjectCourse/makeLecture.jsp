@@ -98,7 +98,6 @@
 					    if (count > 0) {
 					    	%>
 							<tr align=center>
-								<td class="each_lecture_front"></td>
 								<td class="each_lecture_front">전공</td>
 								<td class="each_lecture_back">과목명</td>
 							</tr>
@@ -111,9 +110,6 @@
 							    	ResultSet rs2 = pstmt.executeQuery(sql);
 							    		%>
 							    		<tr>
-								    		<td class="each_lecture_front" align="center">
-								    			<input type="checkbox" name="requested_lecture" id="subject_check">
-								    		</td>
 								    		<td class="each_lecture_front" align="center">
 								    		<%
 								    			int type = rs.getInt("lec_type");
@@ -131,9 +127,6 @@
 								    		<td class="each_lecture_back" align="center">
 								    			<%=rs.getString("lec_name") %>
 								    			</td>
-								    		<td align="center">
-												<button type="submit" id="cancel_button">신청 취소</button>
-											</td>
 											
 										
 										</tr>

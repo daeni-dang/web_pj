@@ -132,9 +132,6 @@
 					</div>
 				</div>
 				</div>
-			<div id="for_button">
-				<button id="save_image_btn">저장</button>
-			</div>
 			</div>
 		</div>
 		<div id="footer">
