@@ -51,9 +51,6 @@
 						session.setAttribute("id", id);
 						session.setAttribute("name", rs.getString("name"));
 						session.setAttribute("jobs", jobs);
-						rs.close();
-						stmt.close();
-						conn.close();
 						if(jobs.equals("Professor")) response.sendRedirect("SchoolRegister/checkProfInfo.jsp");
 						else if(jobs.equals("Student")) response.sendRedirect("SchoolRegister/checkStudentInfo.jsp");
 						else if(jobs.equals("Manager")) response.sendRedirect("SchoolRegister/checkManagerInfo.jsp");
@@ -61,11 +58,11 @@
 				}
 			}
 		} catch (Exception e) {
-			out.print(e);
+				out.println("<h2>해당 아이디가 존재 하지않습니다<br>");
+				%>
+				<a href="Login.jsp">login</a>
+		<%
 		}
-		rs.close();
-		stmt.close();
-		conn.close();
 	%>
 </body>
 </html>
