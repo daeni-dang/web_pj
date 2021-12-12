@@ -28,7 +28,7 @@
     	Class.forName("com.mysql.jdbc.Driver");
     	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
     	con = DriverManager.getConnection(driver, "root", "0000");
-    	sql = "select name, pro_num from professer";
+    	sql = "select name, pro_num from professor";
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {

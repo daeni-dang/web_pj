@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
 <link rel="stylesheet" type="text/css" href="./leave_return.css" />
 
 </head>
@@ -59,7 +59,6 @@
 					<option value="general" id="general">일반 휴학</option>
 					<option value="military" id="military">군휴학</option>
 				</select>
-				<button id="reg_button">신청</button>
 			</div>
 			<div class="content_bottom">
 				<div id="title_leave_return">휴/복학 신청 내역</div>
@@ -82,10 +81,5 @@
 			<p>Dongguk University Web_Programming Project</p>
 		</div>
 	</div>
-	
-	<!-- 승인완료 버튼 -->
-	<!-- <div class="accept">승인완료</div>-->
-	<!-- 승인중 버튼 -->
-	<!-- <div class="reject">승인거절</div> -->
 </body>
 </html>

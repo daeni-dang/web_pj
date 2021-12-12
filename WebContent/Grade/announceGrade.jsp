@@ -64,7 +64,7 @@
 						ResultSet rs2=null;
 						ResultSet rs3=null;
 						int lecture_num;
-						int professer_num;
+						int professor_num;
 						String lecture=null;
 						String professor=null;
 						String grade=null;
@@ -84,7 +84,7 @@
 						try{
 							while(rs.next()) {
 								grade=rs.getString("final_grade");
-								professer_num=rs.getInt("pro_num");
+								professor_num=rs.getInt("pro_num");
 								lecture_num=rs.getInt("lec_num");
 								stmt = conn.createStatement();
 								sql = "select * from lecture where lecture_num = "+ lecture_num;
@@ -93,7 +93,7 @@
 								lecture=rs2.getString("lec_name");
 								}
 								stmt = conn.createStatement();
-								sql = "select * from professer where pro_num = " + professer_num;
+								sql = "select * from professor where pro_num = " + professor_num;
 								rs3 = stmt.executeQuery(sql);
 								if (rs3.next()){
 								professor=rs3.getString("name");

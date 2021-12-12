@@ -81,7 +81,7 @@
 					    				<%=rs.getInt("lecture_num") %>
 					    			</td>
 					    			<%
-					    				sql = "select name from professer where pro_num="+rs.getInt("pro_num");
+					    				sql = "select name from professor where pro_num="+rs.getInt("pro_num");
 
 										pstmt = con.prepareStatement(sql);
 							    		ResultSet rs2 = pstmt.executeQuery(sql);
