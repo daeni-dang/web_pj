@@ -33,13 +33,6 @@
 						<li onclick="location.href='../Grade/checkGradeEachLecture.jsp'">강의별 성적 조회</li>
 					</ul>
 				</li>
-				<li class="menubar">등록
-					<ul>
-						<%//행정업무자 %>
-						<li onclick="location.href='../Register/confirmPayment.jsp'">납부 확인</li>
-						
-					</ul>
-				</li>
 			</ul>
 		</div>
 </body>

@@ -1,4 +1,3 @@
-<%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
@@ -8,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>Insert title here</title>
 
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
@@ -16,10 +16,12 @@
 <%
 	String name = (String) session.getAttribute("name");
 	String id = (String) session.getAttribute("id");
+	String jobs = (String) session.getAttribute("jobs");
+	if (request.getParameter("YEAR") == null || request.getParameter("Semester") == null)
+		response.sendRedirect(request.getRequestURI() + "?YEAR=2021&Semester=2");
 %>
 
 </head>
-
 <body>
 	<div id="container">
 		<div id="header">
@@ -32,41 +34,57 @@
 			<p>고지서 출력</p>
 		</div>
 		<!-- 메뉴 바 include -->
-		<%@ include file="../Common/menuBar_st.jsp" %>
-
+		<%@ include file="../Common/menuBar_st.jsp"%>
 		<div id="content">
+			<form method="get" action="printBill.jsp">
+				<tr>
+					<td><select name="YEAR" id="YEAR" title="년도" class="select w80"></select></td>
+					<td><select name="Semester" id="Semester" title="학기" class="select w80"></select></td>
+					<td>
+						<button id=time_tag>조회</button>
+					</td>
+				</tr>
+
+			</form>
 			<%
 				Connection conn = null;
 				Statement stmt = null;
 				ResultSet rs = null;
 				int Tuition = 0, Council = 0, Enrollment = 0;
 				int Tuition_discount = 0, Council_discount = 0, Enrollment_discount = 0;
+				int Payment = 0;
 				try {
 
 					Class.forName("com.mysql.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
 					conn = DriverManager.getConnection(url, "root", "0000");
 					stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-					String sql_update = "select * from student_register "
-							+ "where id = " + id 
-							+ " and " 
-							+ "Year = 2021 " // Change logic
-							+ "and "
-							+ "Semester = 2"; // Change logic too
+					String sql_update = "select * from student_register " + "where st_num = " + id + " and " + "Year = ";
+					sql_update = sql_update + request.getParameter("YEAR");
+					sql_update = sql_update + " and " + "Semester = " + request.getParameter("Semester");
 					rs = stmt.executeQuery(sql_update);
 				} catch (Exception e) {
 					out.println("DB 연동 오류입니다.: " + e.getMessage());
+					out.println("test");
 				}
-				while (rs.next()) {
-					Tuition = rs.getInt("Tuition");
-					Council = rs.getInt("Council");
-					Enrollment = rs.getInt("Enrollment");
-					Tuition_discount = rs.getInt("Tuition_discount");
-					Council_discount = rs.getInt("Council_discount");
-					Enrollment_discount = rs.getInt("Enrollment_discount");
-				}
+					rs.last();
+					if (rs.getRow() == 0)
+						out.print("<h2>해당 기간의 정보가 없습니다.");
+					else {
+						rs.beforeFirst();
+						while (rs.next()) {
+							Tuition = rs.getInt("Tuition");
+							Council = rs.getInt("Council");
+							Enrollment = rs.getInt("Enrollment");
+							Tuition_discount = rs.getInt("Tuition_discount");
+							Council_discount = rs.getInt("Council_discount");
+							Enrollment_discount = rs.getInt("Enrollment_discount");
+							Payment = rs.getInt("Payment");
+						}
 			%>
-			<p>2021년 2학기 </p>
+			<h3><%=request.getParameter("YEAR")%>년
+				<%=request.getParameter("Semester")%>학기
+			</h3>
 			<table id="register_table" border="1">
 				<tr>
 					<th width="260">구분</th>
@@ -87,24 +105,73 @@
 					<td width="260"><%=Tuition - Tuition_discount%>원</td>
 				</tr>
 				<tr>
-					<td width="260">입학금</td>
-					<td width="260"><%=Enrollment%>원</td>
-					<td width="260"><%=Enrollment_discount%>원</td>
-					<td width="260"><%=Enrollment - Enrollment_discount%>원</td>
+					<td width="260">학생회비</td>
+					<td width="260"><%=Council%>원</td>
+					<td width="260"><%=Council_discount%>원</td>
+					<td width="260"><%=Council - Council_discount%>원</td>
 				</tr>
 				<tr>
 					<td width="260">합계</td>
-					<td width="260"><%=Enrollment + Tuition + Enrollment%>원</td>
-					<td width="260"><%=Enrollment_discount + Tuition_discount + Enrollment_discount%>원</td>
-					<td width="260"><%=(Enrollment + Tuition + Enrollment)
-					- (Enrollment_discount + Tuition_discount + Enrollment_discount)%>원</td>
+					<td width="260"><%=Enrollment + Tuition + Council%>원</td>
+					<td width="260"><%=Enrollment_discount + Tuition_discount + Council_discount%>원</td>
+					<td width="260"><%=(Enrollment + Tuition + Council)
+							- (Enrollment_discount + Tuition_discount + Council_discount)%>원</td>
 				</tr>
 			</table>
-			<input type = "button" >
+			<button id='btnExport' style="width: 60pt; height: 20pt;">출력</button>
+			<%
+				}
+				conn.close();
+				stmt.close();
+				rs.close();
+			%>
 		</div>
 		<div id="footer">
 			<p>Dongguk University Web_Programming Project</p>
 		</div>
 	</div>
+	<script>
+		$(document).ready(
+				function() {
+					setDateBox();
+					function setDateBox() {
+						var dt = new Date();
+						var year = "";
+						var com_year = dt.getFullYear();
+						var com_month = dt.getMonth();
+						$("#YEAR").append("<option value=''>년도</option>");
+						for (var y = (com_year - 3); y <= (com_year); y++) {
+							if(y == com_year) $("#YEAR").append("<option value='"+ y +"' selected >" + y + " 년"+ "</option>");
+							else $("#YEAR").append("<option value='"+ y +"'>" + y + " 년"+ "</option>");
+						}
+						var Semester;
+						$("#Semester").append("<option value=''>학기</option>");
+						for (var i = 1; i <= 2; i++) {
+							if(parseInt(com_month / 6) + 1 == i)$("#Semester").append("<option value='"+ i +"' selected>" + i + " 학기"+ "</option>");
+							else $("#Semester").append("<option value='"+ i +"'>" + i + " 학기"+ "</option>");
+						}
+					}
+
+					function itoStr($num) {
+						$num < 10 ? $num = '0' + $num : $num;
+						return $num.toString();
+					}
+
+					var btn = $('#btnExport');
+					var tbl = 'register_table';
+					btn.click(function(e) {
+						var fileName =<%=id%>+ ".xls";
+						var a = document.createElement('a');
+						var data_type = 'data:application/vnd.ms-excel';
+						var table_div = document.getElementById(tbl);
+						var table_html = table_div.outerHTML.replace(/ /g,
+								'%20');
+						a.href = data_type + ', ' + table_html;
+						a.download = fileName;
+						a.click();
+						e.preventDefault();
+					});
+				});
+	</script>
 </body>
 </html>
