@@ -53,6 +53,13 @@
 			pstmt.setString(10, password);
 	
 			pstmt.executeUpdate();
+			
+			
+			sql = "insert into student_register(st_num)  values(?)"; //+id ;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,st_num);
+			
+			pstmt.executeUpdate();
 			%>
 			<script>alert("학생 등록이 완료되었습니다.");</script>
 			<%
