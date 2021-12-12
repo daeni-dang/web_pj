@@ -21,7 +21,7 @@
 			<img id="image" alt="error" src="../elephant.png" align="left">
 			<div id="header_in">
 				<p font-size:32px><%=name %>님 환영합니다</p>
-				<button background-color:"#FFFFFF", font-color:"#000000",align:"right">로그아웃</button>
+				<button background-color:"#FFFFFF", font-color:"#000000",align:"right" onclick="location.href='../Logout.jsp'">로그아웃</button>
         		</div>
 			<p>개인 정보 조회 </p>
 		</div>
