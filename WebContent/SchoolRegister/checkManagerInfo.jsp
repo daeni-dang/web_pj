@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>개인 정보 조회</title>
 
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./info.css" />
@@ -85,7 +85,7 @@
 				</div>
 				<div class="each_content">
 					<div class="each_content_title">
-						교번 :
+						관리자 번호 :
 					</div>
 					<div class="each_content_content">
 						<!-- 가져온 학번 --> <%=mgr_num %>
@@ -101,7 +101,7 @@
 				</div>
 				<div class="each_content">
 					<div class="each_content_title">
-						연구실 :
+						사무실 :
 					</div>
 					<div class="each_content_content">
 						<!-- 가져온 연구실 --> <%=office %>

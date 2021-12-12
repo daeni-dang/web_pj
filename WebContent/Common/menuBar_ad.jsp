@@ -18,6 +18,11 @@
 					<li onclick="location.href='../SchoolRegister/checkManagerInfo.jsp'">개인 정보 조회</li>
 				</ul>
 			</li>
+			<li class="menubar">학생 및 교수 등록
+				<ul>
+					<li onclick="location.href='../SchoolRegister/registerStPro.jsp'">학생 및 교수 등록</li>
+				</ul>
+			</li>
 			<li class="menubar">등록
 				<ul>
 					<%
