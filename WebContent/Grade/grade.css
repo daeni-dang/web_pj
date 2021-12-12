@@ -1,0 +1,139 @@
+#content {
+	overflow: auto;
+	padding:2%
+}
+
+#title {
+	font-size: 27px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.content_top {
+	float:top;
+	height: 24%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+	margin-bottom: 17px;
+	font-size: 20px;
+}
+.content_bottom {
+	float:bottom;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+	font-size:18px;
+}
+#title_each_grade {
+	font-size: 27px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+#reg_button {
+	font-size: 20px;
+	width: 70px;
+	height: 35px;
+	background-color: #5E5E5E;
+	color: white;
+}
+.drop_down {
+	margin-right: 20px;
+	width: 150px;
+	height: 30px;
+	font-size: 20px;
+}
+.each_grade_table{
+	 border : 1px solid black;
+	 border-radius: 3px;
+ 	 border-collapse : collapse;
+ 	 margin-bottom:100px;
+ 	 
+}
+.each_grade_td{
+	 border : 1px solid #bcbcbc;
+ 	 border-collapse : collapse;
+ 	 height:30px;
+ 	 width:125px;
+}
+.each_grade_th{
+	 border : 1px solid #bcbcbc;
+ 	 border-collapse : collapse;
+ 	 height:30px;
+ 	 width:125px;
+ 	 background-color: #E0E0E0;
+}
+.each_content {
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	height:30px;
+	width:15%;
+	text-align:center;
+	float: left;
+	font-size:20px;
+	font-weight: bold;
+}
+
+#title_grade {
+	float:top;
+	height:30px;
+	margin-bottom: 30px;
+}
+.grade_td{
+	 border : 1px solid #bcbcbc;
+ 	 border-collapse : collapse;
+ 	 height:30px;
+ 	 width:400px;
+}
+.each_info {
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	height:30px;
+	width:10%;
+	font-size:18px;
+	font-weight: bold;
+	margin:5px;	
+}
+#all_grade_content {
+	float:top;
+	height:40px;
+	margin-bottom: 15px;
+}
+.all_info {
+	border: solidc;
+	border-radius: 3px;
+	height:35px;
+	width:30%;
+	text-align:center;
+	float: left;
+	font-size:25px;
+	font-weight: bold;
+	background-color:#E0E0E0;
+	margin-right: 20px;
+}
+
+#grade_button {
+	font-size: 20px;
+	width: 100px;
+	border-radius: 3px;
+	border:1px solid #E0E0E0;
+	height: 35px;
+	background-color: #E0E0E0;
+	color: black;
+}
+#register_button {
+	float:right;
+	font-size: 20px;
+	width: 100px;
+	border-radius: 3px;
+	border:1px solid #E0E0E0;
+	height: 35px;
+	background-color: #E0E0E0;
+	color: black;
+}
+.student_info {
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	height:30px;
+	width:150px;
+	font-size:18px;
+	font-weight: bold;
+}

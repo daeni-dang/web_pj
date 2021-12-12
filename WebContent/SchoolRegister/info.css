@@ -1,0 +1,94 @@
+.inner_content {
+	overflow:auto;
+}
+
+.inner_content_left {
+	float: left;
+	width: 17%;
+	height: 250px;
+}
+
+.inner_content_right {
+	padding: 2%;
+	border: solid 1px;
+	float: right;
+	width: 76%;
+	height: 250px;
+}
+
+.inner_image_top {
+	border: solid 1px;
+	float: top;
+	width: 100%;
+	height: 80%;
+}
+
+.inner_image_bottom {
+	float: bottom;
+	width: 100%;
+	height: 18%;
+}
+
+#change_image_btn {
+	margin-top: 5%;
+	align: center;
+	width: 100%;
+	height: 100%;
+	color: white;
+	background-color: #5E5E5E;
+	font-size: 20px;
+	border-radius: 5px;
+}
+
+.each_content {
+	display: inline-block;
+	margin: 1%;
+	font-size: 20px;
+	font-weight: bold;
+	width: 30%;
+}
+
+.each_content_title {
+	width: 38%;
+	text-align: right;
+	float: left;
+}
+
+.each_content_content {
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	width: 59%;
+	float: right;
+}
+.each_large_content {
+	display: inline-block;
+	margin: 1%;
+	font-size: 20px;
+	font-weight: bold;
+	width: 100%;
+}
+.each_large_content_title {
+	width: 11%;
+	text-align: right;
+	float: left;
+}
+.each_content_large_content {
+	border: 1px solid #bcbcbc;
+	border-radius: 3px;
+	width: 84%;
+	margin-right: 4%;
+	float: right;
+}
+
+#for_button {
+	float:right;
+}
+#save_image_btn {
+	margin-top: 50%;
+	width: 150px;
+	height: 50px;
+	color: white;
+	background-color: #5E5E5E;
+	font-size: 20px;
+	border-radius: 5px;
+}

@@ -1,0 +1,94 @@
+#content {
+	overflow: auto;
+}
+
+#title {
+	font-size: 27px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.content_top {
+	float:top;
+	height: 60%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+	margin-bottom: 10px;
+}
+.content_top_down {
+	overflow: auto;
+	margin-top: 10px;
+	border: 1px solid;
+	height: 60%;
+}
+.before_search {
+	text-align: center;
+	margin-top: 6%;
+}
+
+.content_bottom {
+	float:bottom;
+	height: 52%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+}
+#subject_check {
+	margin-top: 12px;
+	width: 30px;
+	height: 30px;
+}
+
+.drop_down {
+	margin-right: 20px;
+	width: 150px;
+	height: 30px;
+	font-size: 20px;
+}
+#reg_button {
+	font-size: 20px;
+	width: 70px;
+	height: 35px;
+	background-color: #5E5E5E;
+	color: white;
+}
+
+.table_title {
+	font-size: 20px;
+}
+.each_content {
+	display: flex;
+	font-size: 20px;
+	font-weight: bold;
+}
+.each_content_title {
+	border: 1px solid #bcbcbc;
+	padding: 1%;
+	margin: 0.4%;
+}
+.each_content_content {
+	width: 80%;
+	border: 1px solid #bcbcbc;
+	padding: 1%;
+	margin: 0.4%;
+	height: 30px;
+}
+#requested_lecture {
+	height: 20px;
+}
+#cancel_button {
+	margin-top: 8.3px;
+	font-size: 20px;
+	width: 130px;
+	height: 35px;
+	background-color: #5E5E5E;
+	color: white;
+}
+#time_button {
+	margin-left: 8.3px;
+	margin-top: 0px;
+	font-size: 20px;
+	width: 150px;
+	height: 35px;
+	background-color: #5E5E5E;
+	color: white;
+}

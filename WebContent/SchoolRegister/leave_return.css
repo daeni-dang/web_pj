@@ -1,0 +1,66 @@
+#title_leave_return {
+	font-size: 27px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.content_top {
+	float:top;
+	height: 24%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+	margin-bottom: 17px;
+}
+
+.content_bottom {
+	float:bottom;
+	height: 52%;
+	border: 1px solid #bcbcbc;
+	padding: 2%;
+}
+
+.drop_down {
+	margin-right: 20px;
+	width: 150px;
+	height: 30px;
+	font-size: 20px;
+}
+#reg_button {
+	font-size: 20px;
+	width: 70px;
+	height: 35px;
+	background-color: #5E5E5E;
+	color: white;
+}
+
+.each_content {
+	display: flex;
+	font-size: 20px;
+	font-weight: bold;
+}
+.each_content_title {
+	border: 1px solid #bcbcbc;
+	padding: 1%;
+	margin: 0.4%;
+}
+.each_content_content {
+	width: 80%;
+	border: 1px solid #bcbcbc;
+	padding: 1%;
+	margin: 0.4%;
+}
+.accepting {
+	background-color: #bcbcbc;
+	padding: 1%;
+	margin: 0.4%;
+}
+.accept {
+	background-color: lightblue;
+	padding: 1%;
+	margin: 0.4%;
+}
+.reject {
+	background-color: pink;
+	padding: 1%;
+	margin: 0.4%;
+}
