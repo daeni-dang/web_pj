@@ -48,7 +48,7 @@
     		st_num = rs.getInt("st_num");
     	}
     	rs.close();
-
+		System.out.println(pro_num);
         //회원가입 처리
 		sql = "insert into eval_lecture values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		pstmt = con.prepareStatement(sql);

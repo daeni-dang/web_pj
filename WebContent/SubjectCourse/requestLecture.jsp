@@ -184,11 +184,6 @@
 								    		<td class="each_lecture_back" align="center">
 								    			<%=rs.getString("lec_name") %>
 								    			</td>
-								    		<td align="center">
-												<button type="submit" id="cancel_button">신청 취소</button>
-											</td>
-											
-										
 										</tr>
 										<%
 							    	}

@@ -32,7 +32,7 @@
     	Class.forName("com.mysql.jdbc.Driver");
     	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
     	con = DriverManager.getConnection(driver, "root", "0000");
-    	sql = "select * from student where st_num"+id;
+    	sql = "select * from student where st_num="+id;
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {
