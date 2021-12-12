@@ -7,10 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>강의 개설</title>
-
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./subject.css" />
-
+<link rel="stylesheet" type="text/css" href="./evalLecture.css" />
+<%
+	String name = (String)session.getAttribute("name");
+	String id =session.getAttribute("id").toString();
+%>
 </head>
 <body>
 <%
@@ -22,22 +25,25 @@
 	ResultSet rs = null;
 	int count = 0;
 	
-	String pro_name = "";
 	int pro_num = 0;
 	try {
     	Class.forName("com.mysql.jdbc.Driver");
     	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
     	con = DriverManager.getConnection(driver, "root", "0000");
-    	sql = "select name, pro_num from professor";
+    	sql = "select name, pro_num from professor where pro_num="+id;
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {
-    		pro_name = rs.getString("name");
     		pro_num = rs.getInt("pro_num");
+    	}
+		sql = "select * from lecture where pro_num="+id;
+    	pstmt = con.prepareStatement(sql);
+    	ResultSet rs2 = pstmt.executeQuery(sql);
+    	while (rs2.next()) {
+    		count += 1;
     	}
 		pstmt.close();
     	rs.close();
-		con.close();
     } catch (ClassNotFoundException e) { 
 		System.out.println("드라이버 로드 실패");
 	} catch (SQLException e) {
@@ -49,7 +55,7 @@
 		<div id="header">
 			<img id="image" alt="error" src="../elephant.png" align="left">
 			<div id="header_in">
-				<p font-size:32px><%=pro_name %>님 환영합니다</p>
+				<p font-size:32px><%=name %>님 환영합니다</p>
 				<button background-color:"#FFFFFF", font-color:"#000000",align:"right" onclick="location.href='../Logout.jsp'">로그아웃</button>
         		</div>
 			<p>강의 개설 </p>
@@ -87,23 +93,66 @@
 			<div class="content_bottom">
 				<div id="title">강의 개설 신청 내역</div>
 				<!-- 가져온 정보 있다면 -->
-				<div class="each_content">
-					<input type="checkbox" name="requested_lecture" id="subject_check">
-					<div class="each_content_content" id="requested_lecture">
-					</div>
-					<!-- 승인중 버튼 -->
-					<div class="accepting">승인중</div>
-				</div>
+				<table>
+					<%
+					    if (count > 0) {
+					    	%>
+							<tr align=center>
+								<td class="each_lecture_front"></td>
+								<td class="each_lecture_front">전공</td>
+								<td class="each_lecture_back">과목명</td>
+							</tr>
+								<%
+						    	sql = "select * from lecture where pro_num="+id;
+						    	pstmt = con.prepareStatement(sql);
+						    	rs = pstmt.executeQuery(sql);
+					    		while (rs.next()) {
+						    		pstmt = con.prepareStatement(sql);
+							    	ResultSet rs2 = pstmt.executeQuery(sql);
+							    		%>
+							    		<tr>
+								    		<td class="each_lecture_front" align="center">
+								    			<input type="checkbox" name="requested_lecture" id="subject_check">
+								    		</td>
+								    		<td class="each_lecture_front" align="center">
+								    		<%
+								    			int type = rs.getInt("lec_type");
+						    					if (type == 0) {
+						    						%>
+						    						전공 
+						    						<%
+						    					} else {
+						    						%>
+						    						교양 
+						    						<%
+						    					}
+						    					 %>
+								    		</td>
+								    		<td class="each_lecture_back" align="center">
+								    			<%=rs.getString("lec_name") %>
+								    			</td>
+								    		<td align="center">
+												<button type="submit" id="cancel_button">신청 취소</button>
+											</td>
+											
+										
+										</tr>
+										<%
+						    	}
+					    	}
+					    	else {
+					    		%>
+					    		<center>신청한 강의가 없습니다.</center>
+					    		<%
+					    	}
+					    	
+					%>
+					</table>
 			</div>
 		</div>
 		<div id="footer">
 			<p>Dongguk University Web_Programming Project</p>
 		</div>
 	</div>
-	
-	<!-- 승인완료 버튼 -->
-	<!-- <div class="accept">승인완료</div>-->
-	<!-- 승인중 버튼 -->
-	<!-- <div class="reject">승인거절</div> -->
 </body>
 </html>

@@ -7,7 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>강의 개설</title>
-
+<%
+	String name = (String)session.getAttribute("name");
+	String id =session.getAttribute("id").toString();
+%>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./subject.css" />
 
@@ -37,14 +40,13 @@
 		Class.forName("com.mysql.jdbc.Driver");
     	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
         con = DriverManager.getConnection(driver, "root", "0000");
-        sql = "select * from professor";
+        sql = "select * from professor where pro_num="+id;
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {
     		pro_name = rs.getString("name");
     	}
     	rs.close();
-
 		sql = "insert into lecture values(?, ?, ?, ?)";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, 0);
@@ -52,8 +54,9 @@
 		pstmt.setString(3, lec_name);
 		pstmt.setInt(4, pro_num);
 
+		System.out.println(id);
 		pstmt.executeUpdate();
-		sql = "select lecture_num from lecture where lec_name='"+lec_name+"'";
+		sql = "select lecture_num from lecture where pro_num='"+id+"'";
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {
@@ -87,7 +90,7 @@
 		<div id="header">
 			<img id="image" alt="error" src="../elephant.png" align="left">
 			<div id="header_in">
-				<p font-size:32px><%=pro_name %>님 환영합니다</p>
+				<p font-size:32px><%=name %>님 환영합니다</p>
 				<button background-color:"#FFFFFF", font-color:"#000000",align:"right" onclick="location.href='../Logout.jsp'">로그아웃</button>
         		</div>
 			<p>강의 개설 </p>
@@ -97,17 +100,16 @@
 		
 		<div id="content">
 			<!-- main content -->
-			
-			<div id="title">강의 개설이 완료되었습니다.</div>
+			<script>
+				alert("강의 개설이 완료되었습니다.");
+			</script>
+			<%
+				response.sendRedirect("makeLecture.jsp");
+			%>
 		</div>
 		<div id="footer">
 			<p>Dongguk University Web_Programming Project</p>
 		</div>
 	</div>
-	
-	<!-- 승인완료 버튼 -->
-	<!-- <div class="accept">승인완료</div>-->
-	<!-- 승인중 버튼 -->
-	<!-- <div class="reject">승인거절</div> -->
 </body>
 </html>

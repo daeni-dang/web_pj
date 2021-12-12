@@ -7,7 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>강의 평가 결과 조회</title>
-
+<%
+	String name = (String)session.getAttribute("name");
+	String id =session.getAttribute("id").toString();
+%>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <link rel="stylesheet" type="text/css" href="./evalLecture.css" />
 </head>
@@ -29,7 +32,7 @@
     	Class.forName("com.mysql.jdbc.Driver");
     	driver = "jdbc:mysql://localhost:3306/web_pj?serverTimezone=UTC";
     	con = DriverManager.getConnection(driver, "root", "0000");
-    	sql = "select name from student";
+    	sql = "select name from student where st_num"+id;
 		pstmt = con.prepareStatement(sql);
     	rs = pstmt.executeQuery(sql);
     	while (rs.next()) {
@@ -49,7 +52,7 @@
 		<div id="header">
 			<img id="image" alt="error" src="../elephant.png" align="left">
 			<div id="header_in">
-				<p font-size:32px><%=st_name %>님 환영합니다</p>
+				<p font-size:32px><%=name %>님 환영합니다</p>
 				<button background-color:"#FFFFFF", font-color:"#000000",align:"right" onclick="location.href='../Logout.jsp'">로그아웃</button>
         		</div>
 			<p>강의 평가</p>
